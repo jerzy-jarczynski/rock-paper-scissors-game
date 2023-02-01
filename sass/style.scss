@@ -27,12 +27,26 @@ body {
     color: $color-light;
 }
 
+.container {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 660px;
+}
+
+@media (max-width: 680px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
 /* Header */
 
 header {
     border-top: 1px solid $color-light-opacity;
     border-bottom: 1px solid $color-light-opacity;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .resultBar {
@@ -63,6 +77,49 @@ header {
             color: $color-dark;
             font-size: 50px;
             font-weight: 500;
+        }
+    }
+}
+
+/* Main */
+
+main {
+    
+    .container {
+        border: 1px solid $color-light-opacity;
+        border-radius: 10px;
+        height: calc(100vh - 280px);
+        min-height: 660px;
+    }
+
+    .wrapper {   
+        border: 10px solid $color-dark-gray;
+        background-color: #d35400;
+        padding: 30px;
+        border-radius: 15px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .image {
+        width: 80%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    #buttons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .buttonWrapper {
+            overflow: hidden;
+            width: 30%;
         }
     }
 }
