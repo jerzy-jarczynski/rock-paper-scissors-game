@@ -1,0 +1,68 @@
+/* Variables */
+
+$color-light: #f3f3f3;
+$color-light-opacity: #f3f3f377;
+$color-dark: #323232;
+$color-dark-gray: #2c3e50;
+$color-player-win: rgba(46,204,113,1);
+$color-computer-win: rgba(231,76,60,1);
+
+$text-main: 'IBM Plex Mono', monospace;
+
+/* Reset */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: $text-main;
+}
+
+/* Globals */
+
+body {
+    background-image: url("../images/prism.png");
+    background-color: $color-dark;
+    background-repeat: repeat;
+    color: $color-light;
+}
+
+/* Header */
+
+header {
+    border-top: 1px solid $color-light-opacity;
+    border-bottom: 1px solid $color-light-opacity;
+    margin-top: 20px;
+}
+
+.resultBar {
+    border-top: 10px solid $color-dark-gray;
+    border-bottom: 10px solid $color-dark-gray;
+    background: rgb(46,204,113);
+    background: linear-gradient(90deg, $color-player-win 50%, $color-computer-win 50%);
+    position: relative;
+    height: 100px;
+
+    .resultCounter {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0 20px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ecf0f1bb;
+        border-radius: 10px;
+        border: 3px solid #7f8c8d;
+
+        div {
+            width: 33.3333%;
+            text-align: center;
+            color: $color-dark;
+            font-size: 50px;
+            font-weight: 500;
+        }
+    }
+}
