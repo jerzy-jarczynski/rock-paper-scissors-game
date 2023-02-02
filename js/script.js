@@ -1,3 +1,12 @@
+// Global Variables
+
+let pcDisplay = document.getElementById('pc-display');
+let pcWait = 'images/pc-wait.jpg';
+let pcRock = 'images/pc-rock.jpg';
+let pcPaper = 'images/pc-paper.jpg';
+let pcScissors = 'images/pc-scissors.jpg';
+let pcCrashed = 'images/pc-crashed';
+
 // Functions
 
 function getMoveName(argMoveId){
@@ -38,7 +47,7 @@ function displayResult(argComputerMove, argPlayerMove) {
 }
 
 function playGame(playerInput) {
-    
+
     clearMessages();
 
     // Computer move
@@ -50,6 +59,8 @@ function playGame(playerInput) {
     let computerMove = getMoveName(randomNumber);
 
     printMessage('Mój ruch to: ' + computerMove);
+
+    changeDisplay(randomNumber);
 
     // Player move
 
@@ -64,7 +75,35 @@ function playGame(playerInput) {
     displayResult(computerMove, playerMove);
 }
 
+function changeDisplay(argMoveId) {
+    if (argMoveId == 1) {
+        pcDisplay.src = pcRock;
+        return;
+    } else if (argMoveId == 2) {
+        pcDisplay.src = pcPaper;
+        return;
+    } else if (argMoveId == 3) {
+        pcDisplay.src = pcScissors;
+        return;
+    } else {
+        pcDisplay.src = pcCrashed;
+        return;
+    }
+}
+
+// Welcome message
+
+printMessage('Click PLAY to start the game.');
+
+let playground = document.getElementById("playground");
+playground.classList.add("beforePlay");
+
 // Event Listeners
+
+document.getElementById('pc').addEventListener('click', function(){
+    playground.classList.remove("beforePlay");
+    pcDisplay.src = pcWait;
+});
 
 document.getElementById('play-rock').addEventListener('click', function(){
     playGame(1);
