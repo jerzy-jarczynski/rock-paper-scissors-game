@@ -106,20 +106,68 @@ main {
 
     .image {
         width: 80%;
+        border-radius: 15px;
+        overflow: hidden;
 
         img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
     #buttons {
+        width: 100%;
         display: flex;
-        justify-content: space-around;
-        align-items: center;
+        justify-content: center;
+    }
 
-        .buttonWrapper {
-            overflow: hidden;
-            width: 30%;
+    .buttonWrapper {
+        width: 27%;
+        padding: 0 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+    }
+
+    .buttonBorder {
+        border: 1px solid $color-light;
+        border-radius: 500px;
+        margin-bottom: 15px;
+        transition: all .2s;
+    }
+
+    .imgWrapper {
+        background-color: #ffffff;
+        width: calc(100% - 20px);
+        padding-bottom: calc(100% - 20px);
+        position: relative;
+        overflow: hidden;
+        border-radius: 500px;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: 10px solid $color-dark-gray;
+        box-sizing: content-box;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            transition: all 0.2s;
         }
     }
+
+    .buttonBorder:hover {
+        transform: scale(0.9);
+        border: 4px solid $color-light;
+    }
+
+    .buttonBorder:hover img {
+        width: 120%;
+    }
+
+
 }
