@@ -88,8 +88,9 @@ main {
     .container {
         border: 1px solid $color-light-opacity;
         border-radius: 10px;
-        height: calc(100vh - 280px);
-        min-height: 660px;
+        height: calc(100vh - 284px);
+        max-height: 655px;
+        
     }
 
     .wrapper {   
@@ -166,8 +167,128 @@ main {
     }
 
     .buttonBorder:hover img {
-        width: 120%;
+        width: 130%;
+    }
+}
+
+/* Footer */
+
+footer {
+    border-top: 1px solid $color-light-opacity;
+    border-bottom: 1px solid $color-light-opacity;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #d3540033;
+}   
+
+.footerRow {
+    border-top: 10px solid $color-dark-gray;
+    border-bottom: 10px solid $color-dark-gray;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    .footerCol {
+        width: 50%;
+        max-width: 400px;
+        padding: 15px;
     }
 
+    .pageSign {
+        text-align: right;
+        line-height: 25px;
+    }
+}
 
+.hardnessLevel {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    h3 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 300;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .radioContainer {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-left: 35px;
+        line-height: 25px;
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 500px;
+        }
+    }
+
+    .radioContainer input:checked ~ .easy {
+        background-color: $color-player-win;
+    }
+
+    .radioContainer input:checked ~ .medium {
+        background-color: #3498db;
+    }
+
+    .radioContainer input:checked ~ .hard {
+        background-color: $color-computer-win;
+    }
+
+    .checkmark::after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .radioContainer input:checked ~ .checkmark::after {
+        display: block;
+    }
+
+    .radioContainer .checkmark::after {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: $color-dark-gray;
+    }
+
+}
+
+@media (max-width: 680px) {
+    .footerRow {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pageSign {
+        text-align: center!important;
+    }
 }
