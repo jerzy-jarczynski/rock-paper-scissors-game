@@ -12,7 +12,23 @@ let pcPoints = document.getElementById('pcPoints');
 let playerPointsCounter = 0;
 let pcPointsCounter = 0;
 
+let radios = document.getElementsByName('radio');
+
+let hardnessLevel = 1;
+
 // Functions
+
+function changeLevel() {
+
+    for (let i = 0, lenght = radios.length; i < lenght; i++) {
+    
+        if (radios[i].checked) {
+            hardnessLevel = radios[i].value;
+            return;
+        }
+
+    }
+}
 
 function changeResultBar() {
 
@@ -71,7 +87,7 @@ function displayResult(argComputerMove, argPlayerMove) {
         document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
         changeResultBar();
-    } else if (playerMove == 'nieznany ruch') {
+    } else if (argPlayerMove == 'nieznany ruch') {
         printMessage('Nieznany ruch gracza. Nieprawidłowy wynik gry.');
     } else {
         printMessage('Nieprawidłowy wynik gry.');
@@ -82,29 +98,88 @@ function playGame(playerInput) {
 
     clearMessages();
 
+    let computerMove;
+
+    let randomHardness = Math.floor(Math.random() * 10 + 1);
+
+    console.log(randomHardness);
+
     // Computer move
 
     let randomNumber = Math.floor(Math.random() * 3 + 1);
 
-    console.log('Wylosowana liczba to: ' + randomNumber);
-
-    let computerMove = getMoveName(randomNumber);
-
-    printMessage('Mój ruch to: ' + computerMove);
-
-    changeDisplay(randomNumber);
-
     // Player move
 
-    console.log('Gracz wpisał: ' + playerInput);
+    // 1 -- ROCK
+    // 2 -- PAPER
+    // 3 -- SCISSORS
 
-   let playerMove = getMoveName(playerInput);
+    // 1 > 3, 2 > 1, 3 > 2
+
+    // Names for moves ID
+
+    let playerMove = getMoveName(playerInput);
+
+    console.log('HARDNESS ' + hardnessLevel);
+
+    if (hardnessLevel == 0) {
+        if (randomHardness % 3 == 0) {
+            if (playerInput == 1) {
+                computerMove = getMoveName(3);
+                changeDisplay(3);
+            } else if (playerInput == 2) {
+                computerMove = getMoveName(1);
+                changeDisplay(1);
+            } else if (playerInput == 3) {
+                computerMove = getMoveName(2);
+                changeDisplay(2);
+            } else {
+                computerMove = getMoveName(randomNumber);
+                changeDisplay(randomNumber);
+            }
+        } else {
+            computerMove = getMoveName(randomNumber);
+            changeDisplay(randomNumber);
+        }
+    } else if (hardnessLevel == 1) {
+        computerMove = getMoveName(randomNumber);
+        changeDisplay(randomNumber);
+    } else if (hardnessLevel == 2) {
+        if (randomHardness % 5 == 0) {
+            if (playerInput == 1) {
+                computerMove = getMoveName(2);
+                changeDisplay(2);
+            } else if (playerInput == 2) {
+                computerMove = getMoveName(3);
+                changeDisplay(3);
+            } else if (playerInput == 3) {
+                computerMove = getMoveName(1);
+                changeDisplay(1);
+            } else {
+                computerMove = getMoveName(randomNumber);
+                changeDisplay(randomNumber);
+            }
+        } else {
+            computerMove = getMoveName(randomNumber);
+            changeDisplay(randomNumber);
+        }
+    } else {
+        computerMove = getMoveName(randomNumber);
+        changeDisplay(randomNumber);
+    }
+
+    // Display moves
+
+    console.log(computerMove);
+
+    printMessage('Mój ruch to: ' + computerMove);
 
     printMessage('Twój ruch to: ' + playerMove);
 
     // Game result
 
     displayResult(computerMove, playerMove);
+
 }
 
 function changeDisplay(argMoveId) {
@@ -141,6 +216,12 @@ document.getElementById('play-paper').addEventListener('click', function(){
 document.getElementById('play-scissors').addEventListener('click', function(){
     playGame(3);
 });
+
+document.getElementById('level-easy').addEventListener('change', changeLevel);
+
+document.getElementById('level-medium').addEventListener('change', changeLevel);
+
+document.getElementById('level-hard').addEventListener('change', changeLevel);
 
 // Welcome message
 
