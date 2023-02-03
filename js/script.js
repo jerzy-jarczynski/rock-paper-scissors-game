@@ -14,6 +14,21 @@ let pcPointsCounter = 0;
 
 // Functions
 
+function changeResultBar() {
+
+    if (playerPointsCounter == 0 && pcPointsCounter == 0) {
+        return;
+    } else {
+
+        let sumPoints = playerPointsCounter + pcPointsCounter;
+        let playerPercent = Math.floor((playerPointsCounter/sumPoints) * 100);
+
+        document.getElementById('resultBar').style.background = 'linear-gradient(90deg, rgb(46, 204, 113) ' + playerPercent +'%, rgb(231, 76, 60) ' + playerPercent + '%)';
+
+    }
+
+}
+
 function getMoveName(argMoveId){
     if (argMoveId == 1) {
         return 'kamień';
@@ -35,21 +50,27 @@ function displayResult(argComputerMove, argPlayerMove) {
     } else if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
         document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
         printMessage('Ty wygrywasz!');
+        changeResultBar();
     } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
         document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
+        changeResultBar();
     } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień') {
         document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
+        changeResultBar();
     } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
         document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
+        changeResultBar();
         printMessage('Ty wygrywasz!');
     } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
         document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
+        changeResultBar();
         printMessage('Ty wygrywasz!');
     } else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
         document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
+        changeResultBar();
     } else if (playerMove == 'nieznany ruch') {
         printMessage('Nieznany ruch gracza. Nieprawidłowy wynik gry.');
     } else {
