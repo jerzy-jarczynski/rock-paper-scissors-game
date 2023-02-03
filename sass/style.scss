@@ -62,8 +62,8 @@ header {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        padding: 0 20px;
         height: 60px;
+        width: 175px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -72,11 +72,24 @@ header {
         border: 3px solid #7f8c8d;
 
         div {
-            width: 33.3333%;
             text-align: center;
             color: $color-dark;
             font-size: 50px;
             font-weight: 500;
+        }
+
+        #colon {
+            width: 4%;
+        }
+
+        #playerPoints {
+            text-align: right;
+            width: 48%;
+        }
+
+        #pcPoints {
+            text-align: left;
+            width: 48%;
         }
     }
 }

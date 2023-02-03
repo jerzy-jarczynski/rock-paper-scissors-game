@@ -7,6 +7,11 @@ let pcPaper = 'images/pc-paper.jpg';
 let pcScissors = 'images/pc-scissors.jpg';
 let pcCrashed = 'images/pc-crashed';
 
+let playerPoints = document.getElementById('playerPoints');
+let pcPoints = document.getElementById('pcPoints');
+let playerPointsCounter = 0;
+let pcPointsCounter = 0;
+
 // Functions
 
 function getMoveName(argMoveId){
@@ -28,16 +33,22 @@ function displayResult(argComputerMove, argPlayerMove) {
     if (argComputerMove == argPlayerMove) {
         printMessage('Remis!');
     } else if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
+        document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
         printMessage('Ty wygrywasz!');
     } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
+        document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
     } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień') {
+        document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
     } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
+        document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
         printMessage('Ty wygrywasz!');
     } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
+        document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
         printMessage('Ty wygrywasz!');
     } else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
+        document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
         printMessage('Komputer wygrywa!');
     } else if (playerMove == 'nieznany ruch') {
         printMessage('Nieznany ruch gracza. Nieprawidłowy wynik gry.');
@@ -91,13 +102,6 @@ function changeDisplay(argMoveId) {
     }
 }
 
-// Welcome message
-
-printMessage('Click PLAY to start the game.');
-
-let playground = document.getElementById("playground");
-playground.classList.add("beforePlay");
-
 // Event Listeners
 
 document.getElementById('pc').addEventListener('click', function(){
@@ -116,3 +120,11 @@ document.getElementById('play-paper').addEventListener('click', function(){
 document.getElementById('play-scissors').addEventListener('click', function(){
     playGame(3);
 });
+
+// Welcome message
+
+printMessage('Click PLAY to start the game.');
+
+let playground = document.getElementById("playground");
+playground.classList.add("beforePlay");
+
