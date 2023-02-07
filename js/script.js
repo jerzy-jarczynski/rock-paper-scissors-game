@@ -20,7 +20,7 @@
 
     // Functions
 
-    function changeLevel() {
+    const changeLevel = function() {
 
         const radios = document.getElementsByName('radio');
 
@@ -34,7 +34,7 @@
         }
     }
 
-    function changeResultBar() {
+    const changeResultBar = function() {
 
         if (playerPointsCounter == 0 && pcPointsCounter == 0) {
             return;
@@ -49,7 +49,8 @@
 
     }
 
-    function getMoveName(argMoveId){
+    const getMoveName = function(argMoveId) {
+
         if (argMoveId == 1) {
             return 'kamień';
         } else if (argMoveId == 2) {
@@ -62,7 +63,7 @@
         return 'nieznany ruch';
     }
 
-    function displayResult(argComputerMove, argPlayerMove) {
+    const displayResult = function(argComputerMove, argPlayerMove) {
 
         const playerPoints = document.getElementById('playerPoints');
         const pcPoints = document.getElementById('pcPoints');
@@ -100,7 +101,7 @@
         }
     }
 
-    function playGame(playerInput) {
+    const playGame = function(playerInput) {
 
         clearMessages();
 
@@ -182,7 +183,7 @@
 
     }
 
-    function changeDisplay(argMoveId) {
+    const changeDisplay = function(argMoveId) {
 
         const pcDisplay = document.getElementById('pc-display');
         const pcRock = 'images/pc-rock.jpg';
