@@ -1,20 +1,33 @@
 {
     // Global Variables
 
-    const pcDisplay = document.getElementById('pc-display');
     const pcWait = 'images/pc-wait.jpg';
     const pcRock = 'images/pc-rock.jpg';
     const pcPaper = 'images/pc-paper.jpg';
     const pcScissors = 'images/pc-scissors.jpg';
     const pcCrashed = 'images/pc-crashed';
 
+    const pcDisplay = document.getElementById('pc-display');
+
     const playerPoints = document.getElementById('playerPoints');
     const pcPoints = document.getElementById('pcPoints');
 
+    const radios = document.getElementsByName('radio');
+
+    const pcAvatar = document.getElementById('pc');
+
+    const rockButton = document.getElementById('play-rock');
+    const paperButton = document.getElementById('play-paper');
+    const scissorsButton = document.getElementById('play-scissors');
+
+    const radioEasy = document.getElementById('level-easy');
+    const radioMedium = document.getElementById('level-medium');
+    const radioHard = document.getElementById('level-hard');
+    
+    const playground = document.getElementById("playground");
+
     let playerPointsCounter = 0;
     let pcPointsCounter = 0;
-
-    const radios = document.getElementsByName('radio');
 
     let hardnessLevel = 1;
 
@@ -202,34 +215,32 @@
 
     // Event Listeners
 
-    document.getElementById('pc').addEventListener('click', function(){
+    pcAvatar.addEventListener('click', function(){
         playground.classList.remove("beforePlay");
         pcDisplay.src = pcWait;
     });
 
-    document.getElementById('play-rock').addEventListener('click', function(){
+    rockButton.addEventListener('click', function(){
         playGame(1);
     });
 
-    document.getElementById('play-paper').addEventListener('click', function(){
+    paperButton.addEventListener('click', function(){
         playGame(2);
     });
 
-    document.getElementById('play-scissors').addEventListener('click', function(){
+    scissorsButton.addEventListener('click', function(){
         playGame(3);
     });
 
-    document.getElementById('level-easy').addEventListener('change', changeLevel);
+    radioEasy.addEventListener('change', changeLevel);
 
-    document.getElementById('level-medium').addEventListener('change', changeLevel);
+    radioMedium.addEventListener('change', changeLevel);
 
-    document.getElementById('level-hard').addEventListener('change', changeLevel);
+    radioHard.addEventListener('change', changeLevel);
 
     // Welcome message
 
     printMessage('Click PLAY to start the game.');
-
-    let playground = document.getElementById("playground");
     playground.classList.add("beforePlay");
 
 }
