@@ -23,7 +23,7 @@
     const radioEasy = document.getElementById('level-easy');
     const radioMedium = document.getElementById('level-medium');
     const radioHard = document.getElementById('level-hard');
-    
+
     const playground = document.getElementById("playground");
 
     let playerPointsCounter = 0;
@@ -79,27 +79,27 @@
         if (argComputerMove == argPlayerMove) {
             printMessage('Remis!');
         } else if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
-            document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
+            playerPoints.innerHTML = ++playerPointsCounter;
             printMessage('Ty wygrywasz!');
             changeResultBar();
         } else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
-            document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
+            pcPoints.innerHTML = ++pcPointsCounter;
             printMessage('Komputer wygrywa!');
             changeResultBar();
         } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień') {
-            document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
+            pcPoints.innerHTML = ++pcPointsCounter;
             printMessage('Komputer wygrywa!');
             changeResultBar();
         } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
-            document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
+            playerPoints.innerHTML = ++playerPointsCounter;
             changeResultBar();
             printMessage('Ty wygrywasz!');
         } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
-            document.getElementById('playerPoints').innerHTML = ++playerPointsCounter;
+            playerPoints.innerHTML = ++playerPointsCounter;
             changeResultBar();
             printMessage('Ty wygrywasz!');
         } else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
-            document.getElementById('pcPoints').innerHTML = ++pcPointsCounter;
+            pcPoints.innerHTML = ++pcPointsCounter;
             printMessage('Komputer wygrywa!');
             changeResultBar();
         } else if (argPlayerMove == 'nieznany ruch') {
