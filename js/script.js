@@ -1,19 +1,6 @@
 {
     // Global Variables
 
-    const pcWait = 'images/pc-wait.jpg';
-    const pcRock = 'images/pc-rock.jpg';
-    const pcPaper = 'images/pc-paper.jpg';
-    const pcScissors = 'images/pc-scissors.jpg';
-    const pcCrashed = 'images/pc-crashed';
-
-    const pcDisplay = document.getElementById('pc-display');
-
-    const playerPoints = document.getElementById('playerPoints');
-    const pcPoints = document.getElementById('pcPoints');
-
-    const radios = document.getElementsByName('radio');
-
     const pcAvatar = document.getElementById('pc');
 
     const rockButton = document.getElementById('play-rock');
@@ -34,6 +21,8 @@
     // Functions
 
     function changeLevel() {
+
+        const radios = document.getElementsByName('radio');
 
         for (let i = 0, lenght = radios.length; i < lenght; i++) {
         
@@ -74,7 +63,9 @@
     }
 
     function displayResult(argComputerMove, argPlayerMove) {
-        console.log('moves:', argComputerMove, argPlayerMove);
+
+        const playerPoints = document.getElementById('playerPoints');
+        const pcPoints = document.getElementById('pcPoints');
 
         if (argComputerMove == argPlayerMove) {
             printMessage('Remis!');
@@ -117,8 +108,6 @@
 
         let randomHardness = Math.floor(Math.random() * 10 + 1);
 
-        console.log(randomHardness);
-
         // Computer move
 
         let randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -134,8 +123,6 @@
         // Names for moves ID
 
         let playerMove = getMoveName(playerInput);
-
-        console.log('HARDNESS ' + hardnessLevel);
 
         if (hardnessLevel == 0) {
             if (randomHardness % 3 == 0) {
@@ -185,8 +172,6 @@
 
         // Display moves
 
-        console.log(computerMove);
-
         printMessage('Mój ruch to: ' + computerMove);
 
         printMessage('Twój ruch to: ' + playerMove);
@@ -198,6 +183,14 @@
     }
 
     function changeDisplay(argMoveId) {
+
+        const pcDisplay = document.getElementById('pc-display');
+        const pcRock = 'images/pc-rock.jpg';
+        const pcPaper = 'images/pc-paper.jpg';
+        const pcScissors = 'images/pc-scissors.jpg';
+        const pcCrashed = 'images/pc-crashed';
+        const pcWait = 'images/pc-wait.jpg';
+
         if (argMoveId == 1) {
             pcDisplay.src = pcRock;
             return;
@@ -207,7 +200,9 @@
         } else if (argMoveId == 3) {
             pcDisplay.src = pcScissors;
             return;
-        } else {
+        } else if (argMoveId == 99) {
+            pcDisplay.src = pcWait;
+        }else {
             pcDisplay.src = pcCrashed;
             return;
         }
@@ -217,7 +212,7 @@
 
     pcAvatar.addEventListener('click', function(){
         playground.classList.remove("beforePlay");
-        pcDisplay.src = pcWait;
+        changeDisplay(99);
     });
 
     rockButton.addEventListener('click', function(){
@@ -233,9 +228,7 @@
     });
 
     radioEasy.addEventListener('change', changeLevel);
-
     radioMedium.addEventListener('change', changeLevel);
-
     radioHard.addEventListener('change', changeLevel);
 
     // Welcome message
